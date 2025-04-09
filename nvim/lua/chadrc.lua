@@ -1,21 +1,31 @@
+local palette = {
+  light_blue = "#7d92a2",
+  warm_orange = "#c2953e",
+  warm_white = "#c4b68f",
+  light_red = "#c65f5f",
+}
+
 local options = {
     base46 = {
         theme = "chocolate", -- default theme
         hl_add = {
-          SnacksDashboardNormal = { fg = "#c4b68f" },
-          SnacksDashboardDesc = {},
-          SnacksDashboardHeader = { link = "SnacksDashboardTitle" },
-          SnacksDashboardTitle = { fg = "#78acb0", bold = true },
+          SnacksDashboardNormal = { fg = palette.warm_white },
+          SnacksDashboardDesc = { fg = palette.light_blue },
+          SnacksDashboardHeader = { fg = palette.warm_orange, bold = true },
+          SnacksDashboardTitle = { link = "SnacksDashboardHeader" },
           SnacksDashboardFooter = { italic = true },
-          SnacksDashboardIcon = { fg = "#568e94" },
-          SnacksDashboardDir = { italic = true },
-          SnacksDashboardFile = { bold = true },
+          SnacksDashboardIcon = { link = "SnacksDashboardHeader" },
+          SnacksDashboardDir = { fg = palette.light_blue, italic = true },
+          SnacksDashboardFile = { fg = palette.warm_white, bold = true },
           SnacksDashboardSpecial = { link = "SnacksDashboardIcon" },
-          SnacksDashboardKey = { link = "SnacksDashboardNormal" },
+          SnacksDashboardKey = { fg = palette.light_red },
         },
 
         hl_override = {
-          ["@comment"] = { italic = true },
+
+          -- EDITOR
+          Comment = { italic = true },
+          ["@comment"] = { link = "Comment" },
 
           Keyword = { fg = "#c2953e" },
           ["@keyword"] = { link = "Keyword" },
@@ -29,15 +39,29 @@ local options = {
           Constant = { link = "Keyword" },
           ["@constant"] = { link = "Constant" },
 
+          Identifier = { fg = "#d6ba95" },
+          ["@identifier"] = { link = "Identifier" },
+
           Property = { fg = "#c2b288"  },
           ["@property"] = { link = "Property" },
 
           Boolean = { bold = true },
           ["@boolean"] = { link = "Boolean" },
 
-
-          ["@function"] = { bold = true },
+          Function = { bold = true },
+          ["@function"] = { link = "Function" },
           ["@function.method.call"] = { italic = true },
+
+          -- UI
+          TelescopeBorder = { fg = "#a98b6f" }, -- Warm borders
+          TelescopePromptPrefix = { fg = "#c68b59" }, -- Prompt icon color
+
+          NvimTreeFolderName = { fg = "#c19a6b" }, -- Warm folder color
+          NvimTreeOpenedFolderName = { fg = "#d8b67e", bold = true }, -- Highlighted open folder
+          StatusLine = { bg = "#2c211a", fg = "#d6ba95" }, -- Status line with warmer colors
+          TabLine = { bg = "#2c211a", fg = "#a98b6f" }, -- Tab line with warmer colors
+          TabLineSel = { bg = "#4a3527", fg = "#e6d2b5", bold = true }, -- Selected tab
+
       },
 
         integrations = {},
@@ -55,7 +79,7 @@ local options = {
 
       statusline = {
           enabled = true,
-          theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
+          theme = "default", -- default/vscode/vscode_colored/minimal
           -- default/round/block/arrow separators work only for default statusline theme
           -- round and block will work for minimal theme only
           separator_style = "arrow",

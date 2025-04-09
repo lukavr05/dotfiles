@@ -5,7 +5,7 @@ require "nvchad.mappings"
 vim.keymap.set("n","-", function()
   require("telescope").extensions.file_browser.file_browser()
   end,
-  {desc = "Toggle Oil floating window"}
+  {desc = "Toggle Telescop File Browser"}
 )
 
 local map = vim.keymap.set
