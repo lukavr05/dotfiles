@@ -1,8 +1,10 @@
 local palette = {
   light_blue = "#7d92a2",
   warm_orange = "#c2953e",
+  light_orange = "#d08b65",
   warm_white = "#c4b68f",
   light_red = "#c65f5f",
+  light_green = "#8ca589",
 }
 
 local options = {
@@ -18,7 +20,7 @@ local options = {
           SnacksDashboardDir = { fg = palette.light_blue, italic = true },
           SnacksDashboardFile = { fg = palette.warm_white, bold = true },
           SnacksDashboardSpecial = { link = "SnacksDashboardIcon" },
-          SnacksDashboardKey = { fg = palette.light_red },
+          SnacksDashboardKey = { fg = palette.warm_orange },
         },
 
         hl_override = {
@@ -27,11 +29,11 @@ local options = {
           Comment = { italic = true },
           ["@comment"] = { link = "Comment" },
 
-          Keyword = { fg = "#c2953e" },
+          Keyword = { fg = palette.warm_orange },
           ["@keyword"] = { link = "Keyword" },
           ["@keyword.repeat"] = { link = "Keyword" },
-          ["@keyword.conditional"] = { fg = "#d08b65" },
-          ["@keyword.conditional.ternary"] = { fg = "#d08b65" },
+          ["@keyword.conditional"] = { fg = palette.light_orange },
+          ["@keyword.conditional.ternary"] = { fg = palette.light_orange },
 
           Character = { link = "Keyword" },
           ["@character"] = { link = "Character" },
@@ -51,6 +53,12 @@ local options = {
           Function = { bold = true },
           ["@function"] = { link = "Function" },
           ["@function.method.call"] = { italic = true },
+
+          Special = { fg = palette.warm_orange },
+          Delimiter = { fg = palette.warm_orange },
+
+            -- LSP
+          ["lsp.type.enumMember"] = { fg = palette.warm_orange, italic = true },
 
           -- UI
           TelescopeBorder = { fg = "#a98b6f" }, -- Warm borders

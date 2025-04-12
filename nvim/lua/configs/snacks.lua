@@ -1,7 +1,4 @@
 require("snacks").setup({
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
       animate = { enabled = true },
       bigfile = { enabled = true },
       dashboard = {
@@ -17,9 +14,14 @@ require("snacks").setup({
             { icon = "󰩈   ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
+        formats = {
+          key = function(item)
+            return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } }
+          end,
+        },
         sections = {
           { section = "header" },
-          { section = "terminal", cmd = "fortune -s", padding = 1, gap = 1, height = 5},
+          { section = "terminal", cmd = "fortune -s", align = "center", padding = 1, gap = 1, height = 7 },
           { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
           { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
           { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
