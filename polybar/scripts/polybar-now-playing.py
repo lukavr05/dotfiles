@@ -25,7 +25,7 @@ control_chars = ['', '', '', '']
 display_player_prefix = {
     "spotify":  '',
     "firefox":  '',
-    "default":  ''
+    "default":  ''
 }
 
 # (list) : list of metadata fields based on mpris sepecification.
@@ -145,7 +145,7 @@ def handle_event(*args):
 def update_message():
     global players, current_player, player_names, message, display_text, message_display_len, display_suffix, last_player_name
     if len(players) == 0:
-        tmp_message = "No player available"
+        tmp_message = "No Player Available"
         update_prefix_suffix()
     else:
         name = get_name_by_index(current_player)
