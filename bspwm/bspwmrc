@@ -15,6 +15,11 @@ bspc config gapless_monocle      true
 bspc config normal_border_color  "#444444"
 bspc config focused_border_color "#8ec07c"
 
+# Cursor theme
+export XCURSOR_THEME="WinSur Dark Cursors"
+export XCURSOR_SIZE=24
+xsetroot -cursor_name left_ptr
+
 # Autostart
 sxhkd &
 nm-applet &
@@ -29,4 +34,6 @@ setxkbmap -option caps:escape
 
 # set default volume to 50%
 pactl set-sink-volume @DEFAULT_SINK@ 50%
+
+
 
