@@ -78,18 +78,18 @@ get_city_info() {
 get_weather_icon() {
     local desc=$1
     case $desc in
-        "Clear") echo "" ;;
-        "Clouds") echo "" ;;
-        "Rain") echo "" ;;
-        "Drizzle") echo "" ;;
-        "Thunderstorm") echo "" ;;
-        "Snow") echo "" ;;
-        "Mist"|"Fog") echo "" ;;
-        "Haze") echo "" ;;
-        "Smoke") echo "" ;;
+        "Clear") echo "" ;;
+        "Clouds") echo "" ;;
+        "Rain") echo "" ;;
+        "Drizzle") echo "" ;;
+        "Thunderstorm") echo "" ;;
+        "Snow") echo "" ;;
+        "Mist"|"Fog") echo "" ;;
+        "Haze") echo "" ;;
+        "Smoke") echo "" ;;
         "Dust"|"Sand") echo "" ;;
         "Squall") echo "" ;;
-        "Tornado") echo "" ;;
+        "Tornado") echo "" ;;
         *) echo "" ;;
     esac
 }
