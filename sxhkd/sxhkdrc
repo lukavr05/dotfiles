@@ -14,9 +14,6 @@ super + d
 super + f
   firefox
 
-super + m
-  /usr/bin/spotify
-
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -52,11 +49,11 @@ super + g
 # state/flags
 #
 
-# Enable fullscreen with Windows + PgUp
+# enable fullscreen
 super + Prior
     bspc node -t fullscreen
 
-# Disable fullscreen with Windows + PgDn
+# disable fullscreen
 super + Next
     bspc node -t tiled
 
