@@ -18,9 +18,16 @@ super + f
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# obsidian
 super + o
   /home/luka/Applications/Obsidian-1.6.7.AppImage . &>/dev/null & disown
 
+# run rofi
+super + space
+    rofi -show drun
+
+super + e
+    pcmanfm
 #
 # bspwm hotkeys
 #
@@ -28,6 +35,10 @@ super + o
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}
+
+# shutdown
+super + shift + q
+  shutdown
 
 # close and kill
 super + q
@@ -44,6 +55,10 @@ super + y
 # swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
+
+# Rotate tree
+super + shift + {Left,Right}
+    bspc node @/ -C {forward,backward}
 
 #
 # state/flags
