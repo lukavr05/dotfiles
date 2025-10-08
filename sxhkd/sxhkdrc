@@ -29,6 +29,10 @@ super + space
 # open file manager
 super + e
     pcmanfm
+
+# open vscode
+super + v
+    code
 #
 # bspwm hotkeys
 #
