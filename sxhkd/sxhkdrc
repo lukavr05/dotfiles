@@ -30,9 +30,9 @@ super + space
 super + e
     pcmanfm
 
-# open vscode
-super + v
-    code
+# open zed editor
+super + c
+    zed
 #
 # bspwm hotkeys
 #
