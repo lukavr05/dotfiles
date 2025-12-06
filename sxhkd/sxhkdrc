@@ -6,10 +6,6 @@
 super + t
 	/home/luka/.local/kitty.app/bin/kitty
 
-# program launcher
-super + d
-	dmenu_run
-
 # firefox
 super + f
   firefox
@@ -24,7 +20,7 @@ super + o
 
 # run rofi
 super + space
-    rofi -show drun
+    exec ~/.config/rofi/launchers/type-1/launcher.sh
 
 # open file manager
 super + e
@@ -38,8 +34,8 @@ super + c
 #
 
 # quit/restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
+super + alt + q
+  exec ~/.config/rofi/powermenu/type-2/powermenu.sh
 
 # shutdown
 super + shift + q
@@ -49,10 +45,21 @@ super + shift + q
 super + q
 	bspc node -{c,k}
 
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
+# minimise current window
+super + h
+	bspc node @ --flag hidden=on
 
+# minimise all but current window
+super + alt + h
+  bspc query -N -d -n .window.!focused | xargs -I winid bspc node winid --flag hidden=on
+
+super + u
+  last=$(bspc query -N -n .window.hidden | tail -n 1); \
+  [ -n "$last"] && bspc node "$last" --flag hidden=off
+
+# restore first hidden window
+super + shift + u
+  bspc query -N -d -n .window.hidden | xargs -I winid bspc node winid --flag hidden=off
 # send the newest marked node to the newest preselected node
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
