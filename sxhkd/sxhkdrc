@@ -1,168 +1,162 @@
-#
-# wm independent hotkeys
-#
+#######################################
+# WM-INDEPENDENT HOTKEYS
+#######################################
 
-# terminal emulator
-super + t
-	/home/luka/.local/kitty.app/bin/kitty
+# App launcher group
+super + {t,f,o,c,e}
+    { \
+      /home/luka/.local/kitty.app/bin/kitty, \
+      firefox, \
+      /home/luka/Applications/Obsidian-1.6.7.AppImage &>/dev/null & disown, \
+      zed, \
+      pcmanfm \
+    }
 
-# firefox
-super + f
-  firefox
-
-# make sxhkd reload its configuration files:
+# Reload sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
-# obsidian
-super + o
-  /home/luka/Applications/Obsidian-1.6.7.AppImage . &>/dev/null & disown
-
-# run rofi
+# Rofi launcher
 super + space
-    exec ~/.config/rofi/launchers/type-1/launcher.sh
+    ~/.config/rofi/launchers/type-1/launcher.sh
 
-# open file manager
-super + e
-    pcmanfm
+#######################################
+# BSPWM HOTKEYS
+#######################################
 
-# open zed editor
-super + c
-    zed
-#
-# bspwm hotkeys
-#
-
-# quit/restart bspwm
+# Power options / quit bspwm
 super + alt + q
-  exec ~/.config/rofi/powermenu/type-2/powermenu.sh
+    ~/.config/rofi/powermenu/type-2/powermenu.sh
 
-# shutdown
 super + shift + q
-  shutdown
+    shutdown
 
-# close and kill
+# Close / kill window
 super + q
-	bspc node -{c,k}
+    bspc node -{c,k}
 
-# minimise current window
+# Minimise current window
 super + h
-	bspc node @ --flag hidden=on
+    bspc node --flag hidden=on
 
-# minimise all but current window
+# Minimise all except current
 super + alt + h
-  bspc query -N -d -n .window.!focused | xargs -I winid bspc node winid --flag hidden=on
+    bspc query -N -d -n .window.!focused | xargs -I winid bspc node winid --flag hidden=on
 
+# Restore latest hidden window
 super + u
-  last=$(bspc query -N -n .window.hidden | tail -n 1); \
-  [ -n "$last"] && bspc node "$last" --flag hidden=off
+    last=$(bspc query -N -n .window.hidden | tail -n 1); \
+    [ -n "$last" ] && bspc node "$last" --flag hidden=off
 
-# restore first hidden window
+# Restore all hidden windows
 super + shift + u
-  bspc query -N -d -n .window.hidden | xargs -I winid bspc node winid --flag hidden=off
-# send the newest marked node to the newest preselected node
-super + y
-	bspc node newest.marked.local -n newest.!automatic.local
+    bspc query -N -d -n .window.hidden | xargs -I winid bspc node winid --flag hidden=off
 
-# swap the current node and the biggest window
+# Send newest marked node to newest preselect
+super + y
+    bspc node newest.marked.local -n newest.!automatic.local
+
+# Swap with biggest window
 super + g
-	bspc node -s biggest.window
+    bspc node -s biggest.window
 
 # Rotate tree
 super + shift + {Left,Right}
     bspc node @/ -C {forward,backward}
 
-#
-# state/flags
-#
+#######################################
+# WINDOW STATES / FLAGS
+#######################################
 
-# enable fullscreen
+# Toggle fullscreen
 super + Prior
     bspc node -t fullscreen
 
-# disable fullscreen
 super + Next
     bspc node -t tiled
 
-# set the window state
+# Window states
 super + {t,shift + t,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
+# Node flags
 super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+    bspc node -g {marked,locked,sticky,private}
 
-#
-# focus/swap
-#
+#######################################
+# FOCUS / NAVIGATION
+#######################################
 
-# Focus window in direction
+# Directional focus
 super + {Left,Down,Up,Right}
     bspc node -f {west,south,north,east}
 
-# focus the node for the given path jump
+# Focus path jumps
 super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+    bspc node -f @{parent,brother,first,second}
 
-# focus the next/previous window in the current desktop
+# Focus next/previous window
 super + {_,shift + }c
-	bspc node -f {next,prev}.local.!hidden.window
+    bspc node -f {next,prev}.local.!hidden.window
 
-# focus the next/previous desktop in the current monitor
+# Focus next/prev desktop
 super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+    bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
+# Focus last node/desktop
 super + {grave,Tab}
-	bspc {node,desktop} -f last
+    bspc {node,desktop} -f last
 
-# Focus older window
-super + Left
+# Focus older/newer window (remove duplicate directional binds!)
+super + alt + Left
     bspc node -f older
 
-# Focus newer window  
-super + Right
+super + alt + Right
     bspc node -f newer
 
-# focus or send to the given desktop
+#######################################
+# MOVE BETWEEN DESKTOPS
+#######################################
+
+# Focus or send to desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# preselect
-#
+#######################################
+# PRESELECT
+#######################################
 
-# preselect the direction
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
-# preselect the ratio
 super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+    bspc node -o 0.{1-9}
 
-# cancel the preselection for the focused node
 super + ctrl + space
-	bspc node -p cancel
+    bspc node -p cancel
 
-# cancel the preselection for the focused desktop
 super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+    bspc query -N -d | xargs -I id bspc node id -p cancel
 
-#
-# move/resize
-#
+#######################################
+# MOVE / RESIZE
+#######################################
 
-# expand a window by moving one of its side outward
+# Expand
 super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-# contract a window by moving one of its side inward
+# Contract
 super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# move a floating window
+# Move floating window
 super + shift + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#######################################
+# AUDIO
+#######################################
 
 XF86AudioRaiseVolume
     pamixer -i 5
@@ -173,7 +167,10 @@ XF86AudioLowerVolume
 XF86AudioMute
     pamixer -t
 
-# Brightness controls
+#######################################
+# BRIGHTNESS
+#######################################
+
 XF86MonBrightnessUp
     brightnessctl set +10%
 
