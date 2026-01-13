@@ -25,7 +25,7 @@ super + space
 #######################################
 
 # Power options / quit bspwm
-super + alt + q
+super + shift + Delete
     ~/.config/rofi/powermenu/type-1/powermenu.sh
 
 super + shift + q
