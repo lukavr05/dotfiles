@@ -26,7 +26,7 @@ super + space
 
 # Power options / quit bspwm
 super + alt + q
-    ~/.config/rofi/powermenu/type-2/powermenu.sh
+    ~/.config/rofi/powermenu/type-1/powermenu.sh
 
 super + shift + q
     shutdown
