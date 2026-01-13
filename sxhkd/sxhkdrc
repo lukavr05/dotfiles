@@ -122,6 +122,18 @@ super + alt + Right
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 
+# Move to next/prev desktop
+super + {_,shift + }Tab
+    bspc desktop -f {next,prev}.local
+
+# Send to next/prev desktop
+super + alt + {_,shift + }Tab
+    bspc node -d {next,prev}.local
+
+# Move desktop to monitor
+super + ctrl + {Left,Right}
+    bspc desktop -m {prev,next} --follow
+
 #######################################
 # PRESELECT
 #######################################
