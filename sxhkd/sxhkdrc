@@ -36,11 +36,11 @@ super + q
     bspc node -{c,k}
 
 # Minimise current window
-super + h
+super + m
     bspc node --flag hidden=on
 
 # Minimise all except current
-super + alt + h
+super + alt + m
     bspc query -N -d -n .window.!focused | xargs -I winid bspc node winid --flag hidden=on
 
 # Restore latest hidden window
@@ -76,7 +76,7 @@ super + Next
     bspc node -t tiled
 
 # Window states
-super + {t,shift + t,f}
+super + {s,shift + s,w,r}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # Node flags
