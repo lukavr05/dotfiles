@@ -45,117 +45,34 @@ dotfiles/
     └── ...
 ```
 
-##  Key Features
-
-### BSPWM Configuration
-- 10 workspaces with Roman numerals
-- Custom border colors (focused: `#8ec07c`, normal: `#444444`)
-- 6px window gaps, 2px borders
-- Autostart applications (picom, polybar, nm-applet, etc.)
-- Caps Lock mapped to Escape
-
-### Polybar Status Bar
-- Custom Gruvbox color scheme
-- Weather widget with auto-location detection and city management
-- Now playing indicator for media with Python integration
-- Bluetooth connectivity status with toggle controls
-- System update notifications with package count monitoring
-- Custom modules for CPU, memory, and volume
-- Enhanced script organization with dedicated subdirectories
-
-### Kitty Terminal
-- Gruvbox-inspired color palette
-- 82% background opacity
-- Custom font configuration
-- Smooth scrolling and block cursor
-
-### Neovim (NvChad v2.5)
-- Modern Neovim configuration with Lazy.nvim plugin manager
-- **Snacks.nvim**: Enhanced dashboard with fortune quotes, file browser, and project management
-- **Noice.nvim**: Improved LSP UI with custom cmdline and popupmenu styling
-- **Conform.nvim**: Code formatting with language-specific formatters (stylua, prettier, clang-format, etc.)
-- **Oil.nvim**: Advanced file explorer with preview, trash support, and LSP integration
-- **Mason & LSP**: Complete language server protocol support
-- **Telescope**: Fuzzy finding and navigation
-- Custom keybindings and Gruvbox-inspired highlights
-
-### Fastfetch
-- Modern system information display replacing Neofetch
-- Custom JSON configuration with icon-based module display
-- Comprehensive system metrics (CPU, memory, disk, battery, packages)
-- Color palette preview with customizable block symbols
-- Optimized performance with threading and timeout settings
-- Enhanced visual output with chafa logo support
-
-### Ly Display Manager
-- Custom Gruvbox-inspired color scheme with dark background (#1D2021)
-- Animated color mixing background with seamless transitions
-- Auto-login configuration for BSPWM session
-- Battery status display and brightness control (F5/F6 keys)
-- Power management shortcuts (F1: shutdown, F2: restart, F3: sleep, F4: hibernate)
-- Big clock display with customizable time format
-- Failed login authentication animation (triggers after 10 failed attempts)
-- Session persistence with save/load functionality
-
-### Keybindings (SXHKD)
-- `Super + Space`: Rofi application launcher
-- `Super + {t,f,o,c,e}`: Launch terminal, browser, obsidian, editor, file manager
-- `Super + Escape`: Reload SXHKD
-- `Super + Shift + Delete`: Power menu (logout/shutdown/restart)
-- Updated keybinding structure to eliminate conflicts
-- Caps Lock mapped to Escape for improved workflow
-
 ##  Installation
 
-1. **Clone the repository**
+1. **Clone and install**
    ```bash
    git clone https://github.com/your-username/dotfiles.git ~/.dotfiles
    cd ~/.dotfiles
+   ./install.sh
    ```
+
+   *Or manually:*
 
 2. **Create symbolic links**
    ```bash
-   # BSPWM
-   ln -sf ~/.dotfiles/bspwm/bspwmrc ~/.config/bspwm/bspwmrc
-   chmod +x ~/.config/bspwm/bspwmrc
-   
-   # SXHKD
+   ln -sf ~/.dotfiles/bspwm/bspwmrc ~/.config/bspwm/bspwmrc && chmod +x ~/.config/bspwm/bspwmrc
    ln -sf ~/.dotfiles/sxhkd/sxhkdrc ~/.config/sxhkd/sxhkdrc
-   
-   # Polybar
-   ln -sf ~/.dotfiles/polybar ~/.config/polybar
-   
-   # Kitty
-   ln -sf ~/.dotfiles/kitty ~/.config/kitty
-   
-   # Picom
+   ln -sf ~/.dotfiles/{polybar,kitty,rofi,nvim,fastfetch} ~/.config/
    ln -sf ~/.dotfiles/picom/picom.conf ~/.config/picom/picom.conf
-   
-   # Rofi
-   ln -sf ~/.dotfiles/rofi ~/.config/rofi
-   
-# Neovim
-    ln -sf ~/.dotfiles/nvim ~/.config/nvim
-    
-# Fastfetch
-    ln -sf ~/.dotfiles/fastfetch ~/.config/fastfetch
-    
-    # Ly Display Manager (requires root)
-    sudo ln -sf ~/.dotfiles/ly/config.ini /etc/ly/config.ini
+   sudo ln -sf ~/.dotfiles/ly/config.ini /etc/ly/config.ini
+   chmod +x ~/.config/polybar/scripts/*.sh ~/.config/polybar/scripts/*/*.sh
+   ```
 
 3. **Install dependencies**
    ```bash
-# Ubuntu/Debian
-    sudo apt install bspwm sxhkd polybar kitty picom rofi fastfetch ly
-    
-    # Arch Linux
-    sudo pacman -S bspwm sxhkd polybar kitty picom rofi fastfetch ly
-   ```
-
-4. **Set up scripts**
-   ```bash
-   chmod +x ~/.config/polybar/scripts/*.sh
-   chmod +x ~/.config/polybar/scripts/*/*.sh
+   # Ubuntu/Debian
+   sudo apt install bspwm sxhkd polybar kitty picom rofi fastfetch ly
+   
+   # Arch Linux
+   sudo pacman -S bspwm sxhkd polybar kitty picom rofi fastfetch ly
    ```
 
 ##  Customization
@@ -187,33 +104,9 @@ Add or remove modules in `polybar/config.ini`:
 - **Display Manager**: Ly (alternative to SDDM/GDM with TTY interface)
 - **Brightness Control**: brightnessctl (for Ly brightness hotkeys)
 
-##  Troubleshooting
 
-- **Polybar not starting**: Check script permissions and Python dependencies
-- **Weather not working**: Set up API key in weather scripts and check city configuration
-- **Neovim plugins**: Run `:Lazy` to install missing plugins, ensure Mason formatters are installed
-- **Fastfetch not displaying**: Check JSON configuration syntax and Nerd Font support
-- **Ly not starting**: Check permissions and ensure Ly service is enabled (`systemctl enable ly`)
-- **Ly configuration not applied**: Verify symlink to `/etc/ly/config.ini` and restart Ly service
-- **Brightness controls not working**: Install brightnessctl and ensure proper permissions
-- **Keybindings not working**: Restart SXHKD with `Super + Escape`
-- **Code formatting not working**: Install required formatters (stylua, prettier, clang-format, gofumpt)
 
-##  Recent Updates
 
-### Major Changes (2025)
-- **Replaced Neofetch with Fastfetch**: Modern system info tool with enhanced customization
-- **Enhanced Neovim Configuration**: Added Snacks.nvim dashboard, Noice.nvim UI improvements, and Conform.nvim formatting
-- **Updated Keybindings**: Replaced VSCode with Zed editor, resolved keybinding conflicts
-- **Improved Polybar Scripts**: Better weather widget with city management, enhanced now-playing with Python
-- **Code Formatting Setup**: Comprehensive formatter support for multiple languages
-
-### New Features
-- Advanced file explorer with Oil.nvim (preview, trash support, LSP integration)
-- Enhanced dashboard with fortune quotes and project management
-- Improved LSP UI with custom cmdline and popup styling
-- System update monitoring with package count display
-- Bluetooth toggle controls in Polybar
 
 ##  Preview
 
