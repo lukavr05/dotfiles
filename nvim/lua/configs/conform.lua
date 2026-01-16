@@ -5,14 +5,20 @@ local options = {
     html = { "prettier" },
     java = { "google-java-format" },
     c = { "clang-format" },
-    go = { "gofumpt" }
+    go = { "gofumpt" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    json = { "prettier" },
+    yaml = { "prettier" },
+    markdown = { "prettier" },
+    python = { "black" },
   },
 
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
+  format_on_save = {
+    -- These options will be passed to conform.format()
+    timeout_ms = 500,
+    lsp_fallback = true,
+  },
 }
 
 return options
