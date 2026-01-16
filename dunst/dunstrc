@@ -4,7 +4,7 @@
     geometry = "300x5-30+20"
     indicate_hidden = yes
     shrink = no
-    transparency = 20
+    transparency = 10
     notification_height = 0
     separator_height = 2
     padding = 8
@@ -27,10 +27,13 @@
     hide_duplicate_count = false
     show_indicators = yes
     icon_position = left
+    progress_bar = true
     max_icon_size = 32
+    icon_theme = "Adwaita"
     sticky_history = yes
     history_length = 20
     browser = firefox
+    dmenu = rofi -dmenu
     always_run_script = true
     title = Dunst
     class = Dunst
