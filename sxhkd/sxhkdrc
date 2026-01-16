@@ -103,6 +103,10 @@ super + {_,shift + }c
 super + bracket{left,right}
     bspc desktop -f {prev,next}.local
 
+# Rofi workspace switcher
+super + d
+    ~/.config/scripts/rofi-workspaces.sh
+
 # Focus last node/desktop
 super + {grave,Tab}
     bspc {node,desktop} -f last
@@ -184,8 +188,8 @@ XF86AudioMute
 #######################################
 
 XF86MonBrightnessUp
-    brightnessctl set +10%
+    ~/dotfiles/scripts/smooth-brightness.sh up 10 20 0.05
 
 XF86MonBrightnessDown
-    brightnessctl set 10%-
+    ~/dotfiles/scripts/smooth-brightness.sh down 10 20 0.05
 
