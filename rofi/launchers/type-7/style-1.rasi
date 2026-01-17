@@ -19,21 +19,17 @@ configuration {
 	window-format:              "{w} · {c} · {t}";
 }
 
+/* Import shared styles */
+@import "../shared/colors.rasi"
+@import "../shared/fonts.rasi"
+
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrains Mono Nerd Font 10";
-    background:                  #11092D;
-    background-alt:              #281657;
-    foreground:                  #FFFFFF;
-    selected:                    #DF5296;
-    active:                      #6E77FF;
-    urgent:                      #8E3596;
 }
 
 /*****----- Main Window -----*****/
 window {
     /* properties for window widget */
-    transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;

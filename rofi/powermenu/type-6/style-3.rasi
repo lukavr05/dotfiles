@@ -29,7 +29,6 @@ USE_BUTTONS=YES
 
 /*****----- Main Window -----*****/
 window {
-    transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;

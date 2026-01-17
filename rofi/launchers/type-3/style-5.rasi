@@ -21,7 +21,6 @@ configuration {
 
 /*****----- Main Window -----*****/
 window {
-    transparency:                "real";
     location:                    north;
     anchor:                      north;
     fullscreen:                  false;
