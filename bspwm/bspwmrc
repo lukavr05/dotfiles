@@ -4,14 +4,18 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Workspaces
-bspc monitor -d I II III
+bspc monitor -d I II III IV V
 
 # Basic settings
 bspc config border_width         2
 bspc config window_gap           6
-bspc config split_ratio          0.52
+bspc config split_ratio          0.55
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
+
+# Enhanced window management
+bspc config removal_adjustment_ratio 0.1
+bspc config automatic_scheme longest_side
 
 # Visual feedback settings
 bspc config pointer_follows_monitor true
