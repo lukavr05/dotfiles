@@ -152,9 +152,17 @@ elif [[ -n "$CITY_ID" ]]; then
         DISPLAY_NAME="City (ID: $CITY_ID)"
     fi
 else
-    # Use defaults
-    CITY_ID="$DEFAULT_CITY_ID"
-    DISPLAY_NAME="$DEFAULT_CITY_NAME"
+    # Try to get current city from current_city file
+    CURRENT_CITY_FILE="$HOME/.config/polybar/scripts/weather/current_city"
+    if [[ -f "$CURRENT_CITY_FILE" ]]; then
+        city_info=$(cat "$CURRENT_CITY_FILE")
+        CITY_ID=$(echo "$city_info" | cut -d: -f1)
+        DISPLAY_NAME=$(echo "$city_info" | cut -d: -f2)
+    else
+        # Use defaults if no current_city file exists
+        CITY_ID="$DEFAULT_CITY_ID"
+        DISPLAY_NAME="$DEFAULT_CITY_NAME"
+    fi
 fi
 
 # Function to display extended weather report
