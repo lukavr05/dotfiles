@@ -188,8 +188,8 @@ XF86AudioMute
 #######################################
 
 XF86MonBrightnessUp
-    ~/dotfiles/scripts/smooth-brightness.sh up 10 20 0.05
+    brightnessctl set +10%
 
 XF86MonBrightnessDown
-    ~/dotfiles/scripts/smooth-brightness.sh down 10 20 0.05
+    brightnessctl set 10%-
 
