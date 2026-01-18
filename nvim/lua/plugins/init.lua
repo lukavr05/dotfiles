@@ -151,5 +151,35 @@ event = "VeryLazy",
         end,
       })
     end,
+  },
+
+  -- Git information plugin
+  {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "G", "Gstatus", "Gcommit", "Gpush", "Gpull" },
+  },
+
+  -- Git branch information in statusline
+  {
+    "APZelos/blamer.nvim",
+    event = "BufRead",
+    config = function()
+      vim.g.blamer_enabled = true
+      vim.g.blamer_delay = 500
+    end,
+  },
+
+  -- Git dashboard
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = { "LazyGit", "LazyGitConfig", "LazyGitCurrentFile", "LazyGitFilter", "LazyGitFilterCurrentFile" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      vim.g.lazygit_floating_window_winblend = 0
+      vim.g.lazygit_floating_window_scaling_factor = 0.9
+      vim.g.lazygit_floating_window_border_chars = {'╭','─','╮','│','╯','─','╰','│'}
+    end,
   }
 }

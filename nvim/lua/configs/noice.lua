@@ -28,10 +28,17 @@ require("noice").setup({
     },
     {
       filter = {
-				event = "notify",
-				find = "No signature help available",
+			event = "notify",
+			find = "No signature help available",
 			},
 			opts = { skip = true },
+    },
+    {
+      filter = {
+        event = "msg_show",
+        find = "process exited with 0",
+      },
+      opts = { skip = true },
     },
   },
 

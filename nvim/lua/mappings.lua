@@ -1,6 +1,7 @@
 require "nvchad.mappings"
 
 -- add yours here
+require "mappings.clipboard"
 
 vim.keymap.set("n","-", function()
   require("telescope").extensions.file_browser.file_browser()
