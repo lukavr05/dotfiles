@@ -30,19 +30,11 @@ dotfiles/
 │   │   ├── bluetooth/     # Bluetooth controls and toggle
 │   │   │   ├── bluetooth.sh
 │   │   │   └── toggle_bluetooth.sh
-│   │   ├── now-playing/   # Music display with MPRIS support
-│   │   │   └── polybar-now-playing.py
-│   │   ├── weather/       # Weather widget with forecast and auto-location
+│   │   ├── weather/       # Weather widget with city configuration
 │   │   │   ├── weather.sh
-│   │   │   ├── weather-forecast.sh
-│   │   │   ├── smart-weather.sh
-│   │   │   ├── auto-location.sh
-│   │   │   ├── toggle-weather.sh
-│   │   │   ├── city-manager.sh
 │   │   │   ├── cities.conf
 │   │   │   └── current_city
-│   │   ├── check_updates.sh # System update monitoring
-│   │   └── netspeed.sh    # Network speed monitoring
+│   │   └── check_updates.sh # System update monitoring
 ├── kitty/           # Terminal emulator
 │   ├── appearance.conf   # Gruvbox theme
 │   ├── fonts.conf        # Font settings
@@ -51,11 +43,10 @@ dotfiles/
 ├── picom/           # Compositor for effects
 │   └── picom.conf        # Animation and transparency settings
 ├── rofi/            # Application launcher with extensive theming
-│   ├── colors/           # 17 color themes (gruvbox, catppuccin, dracula, etc.)
-│   ├── launchers/        # 7 launcher types with shared components
-│   ├── powermenu/        # Power menu with 6 different types
-│   │   ├── type-1/ through type-6/
-│   ├── applets/          # System applets (5 types + shared/bin)
+│   ├── colors/           # Color themes (gruvbox, catppuccin, dracula, onedark, etc.)
+│   ├── launchers/        # Multiple launcher types (type-1, type-2, type-5, type-7)
+│   ├── powermenu/        # Power menu with different styles (type-2, type-3)
+│   ├── applets/          # System applets directory
 │   ├── images/           # Background images for themes
 │   └── scripts/          # Custom launcher scripts
 ├── dunst/           # Notification daemon
@@ -67,7 +58,6 @@ dotfiles/
 ├── fastfetch/       # System info display with custom config
 │   └── config.jsonc     # Fastfetch configuration
 ├── scripts/         # Custom utility scripts
-│   ├── smooth-brightness.sh # Smooth brightness transitions
 │   └── rofi-workspaces.sh   # Workspace switcher for BSPWM
 └── nvim/            # Neovim configuration (NvChad v2.5)
     ├── lua/configs/     # Plugin configurations
@@ -79,7 +69,16 @@ dotfiles/
     │   ├── lspconfig.lua # LSP configuration
     │   ├── mason.lua    # LSP package manager
     │   └── lazy.lua     # Plugin manager configuration
-    └── ...
+    ├── lua/mappings/    # Custom keybindings
+    │   ├── clipboard.lua # Clipboard mappings
+    │   └── mappings.lua # General mappings
+    ├── lua/plugins/     # Plugin specifications
+    │   ├── clipboard.lua # Clipboard plugin
+    │   └── init.lua     # Plugin initialization
+    ├── chadrc.lua       # Main NvChad configuration
+    ├── highlights.lua   # Custom highlight groups
+    ├── options.lua      # Neovim options
+    └── .stylua.toml     # Lua formatting configuration
 ```
 
 ##  Installation
@@ -127,10 +126,8 @@ The setup uses a consistent Gruvbox color palette:
 
 ### Polybar Modules
 Add or remove modules in `polybar/config.ini`:
-- Weather: Requires API key setup, includes forecast and auto-location
+- Weather: Basic weather display with city configuration
 - Bluetooth: Uses `bluetooth.sh` script with toggle functionality
-- Music: Integrates with MPRIS players via `polybar-now-playing.py`
-- Network Speed: Real-time network monitoring via `netspeed.sh`
 - System Updates: Monitors available package updates
 
 ##  Requirements
@@ -139,11 +136,9 @@ Add or remove modules in `polybar/config.ini`:
 - **Shell**: Zsh (configured in kitty)
 - **Cursor Theme**: WinSur Dark Cursors (set in bspwmrc)
 - **Additional Tools**: nitrogen (wallpaper), fortune (for Neovim dashboard)
-- **Python Dependencies**: Required for Polybar now-playing module
 - **Code Formatters**: stylua, prettier, clang-format, gofumpt (for Neovim formatting)
 - **Display Manager**: Ly (alternative to SDDM/GDM with TTY interface)
-- **Brightness Control**: brightnessctl (for smooth brightness transitions)
-- **Math Utilities**: bc (required for smooth-brightness.sh script)
+- **Math Utilities**: bc (required for system calculations)
 - **File Manager**: PCManFM (for graphical file management)
 - **Notifications**: Dunst (for desktop notifications)
 
