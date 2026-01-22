@@ -103,10 +103,6 @@ super + {_,shift + }c
 super + bracket{left,right}
     bspc desktop -f {prev,next}.local
 
-# Rofi workspace switcher
-super + d
-    ~/.config/scripts/rofi-workspaces.sh
-
 # Focus last node/desktop
 super + {grave,Tab}
     bspc {node,desktop} -f last
