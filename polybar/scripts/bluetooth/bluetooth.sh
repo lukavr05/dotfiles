@@ -1,45 +1,9 @@
 #!/bin/bash
 
-# Cache settings
-CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/polybar"
-CACHE_FILE="$CACHE_DIR/bluetooth_state"
-CACHE_EXPIRY=5  # Cache state for 5 seconds
-
 # Icons
 BT_CONNECTED_ICON=""
 BT_DISCONNECTED_ICON=""
 BT_POWERED_OFF_ICON=""
-
-# Create cache directory
-mkdir -p "$CACHE_DIR"
-
-# Check if cache is valid
-check_cache() {
-    if [[ -f "$CACHE_FILE" ]]; then
-        local cache_time
-        if stat -c %Y "$CACHE_FILE" &>/dev/null; then
-            cache_time=$(stat -c %Y "$CACHE_FILE")
-        elif stat -f %m "$CACHE_FILE" &>/dev/null; then
-            cache_time=$(stat -f %m "$CACHE_FILE")
-        else
-            return 1
-        fi
-        
-        local current_time=$(date +%s)
-        local cache_age=$((current_time - cache_time))
-        
-        if [[ $cache_age -lt $CACHE_EXPIRY ]]; then
-            cat "$CACHE_FILE"
-            return 0
-        fi
-    fi
-    return 1
-}
-
-# Update cache
-update_cache() {
-    echo "$1" > "$CACHE_FILE"
-}
 
 # Get bluetooth status
 get_bluetooth_status() {
@@ -73,8 +37,4 @@ get_bluetooth_status() {
 }
 
 # Main logic
-if ! check_cache; then
-    status=$(get_bluetooth_status)
-    update_cache "$status"
-    echo "$status"
-fi
+get_bluetooth_status

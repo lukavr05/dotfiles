@@ -46,11 +46,13 @@ xsetroot -cursor_name left_ptr
 # Autostart applications with error handling
 {
     nm-applet &
-    pulseaudio --start &
+    pipewire &
+    pipewire-pulse &
+    wireplumber &
     picom --experimental-backends --config ~/.config/picom/picom.conf &
     nitrogen --restore &
     dunst &
-    polybar &
+    ~/.config/polybar/launch.sh &
 } &
 
 # Map Caps Lock to Escape
