@@ -31,13 +31,11 @@ source $ZSH/oh-my-zsh.sh
 # Environment Variables
 # =============================================================================
 # PATH configuration
-export PATH=/opt/nvim-linux64/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH
-export PATH="/home/luka/.cache/.bun/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="/snap/bin:$PATH"
-export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="/usr/local/go/bin:$HOME/go/bin:/home/luka/.npm-global/bin:/snap/bin:/home/luka/.cargo/bin:/home/luka/.cache/.bun/bin:/opt/nvim-linux64/bin:/home/luka/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+
+# Go configuration
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
 
 # Preferred editor
 export EDITOR='nvim'
@@ -183,6 +181,7 @@ alias activate='source .venv/bin/activate'
 
 # --- System Monitoring ---
 alias top='htop'
+alias btm='bottom'
 alias sysinfo='fastfetch'
 alias mem='free -h'
 alias disk='df -h'
@@ -211,6 +210,10 @@ alias sshk='ssh-keygen -t ed25519'
 alias q='exit'
 alias c='clear'
 alias h='history'
+
+# --- funny ---
+alias wtf='man'
+alias fuck='killall'
 
 # =============================================================================
 # Key Bindings
