@@ -46,20 +46,17 @@ xsetroot -cursor_name left_ptr
 # Autostart applications with error handling
 {
     nm-applet &
-    pipewire &
-    pipewire-pulse &
-    wireplumber &
+    sleep 1
+    ~/.config/polybar/launch.sh &
     picom --experimental-backends --config ~/.config/picom/picom.conf &
     nitrogen --restore &
     dunst &
-    ~/.config/polybar/launch.sh &
 } &
 
 # Map Caps Lock to Escape
 setxkbmap -option caps:escape
 
 # set default volume to 50%
-pactl set-sink-volume @DEFAULT_SINK@ 50%
-
+(sleep 3 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 50%) &
 
 
