@@ -51,6 +51,8 @@ xsetroot -cursor_name left_ptr
     picom --experimental-backends --config ~/.config/picom/picom.conf &
     nitrogen --restore &
     dunst &
+    # Auto-lock after 5 minutes of inactivity
+    xautolock -detectidle -time 5 -locker "i3lock -c 000000" &
 } &
 
 # Map Caps Lock to Escape
