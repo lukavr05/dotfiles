@@ -48,12 +48,10 @@ xsetroot -cursor_name left_ptr
     nm-applet &
     sleep 1
     ~/.config/polybar/launch.sh &
-    picom --experimental-backends --config ~/.config/picom/picom.conf &
+    picom &
     nitrogen --restore &
     tint2 &
     dunst &
-    # Auto-lock after 5 minutes of inactivity
-    xautolock -detectidle -time 5 -locker "i3lock -c 000000" &
 } &
 
 # Map Caps Lock to Escape
