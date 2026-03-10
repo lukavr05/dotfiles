@@ -200,6 +200,7 @@ alias untar='tar -xvf'
 alias targz='tar -czvf'
 
 # --- Window Manager ---
+alias picom='/usr/local/bin/picom'
 alias restart-polybar='polybar-msg cmd restart'
 alias restart-wm='bspc wm -r'
 
