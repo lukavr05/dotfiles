@@ -92,7 +92,7 @@ run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
 		betterlockscreen -l
 	elif [[ "$1" == '--opt2' ]]; then
-		confirm_run 'kill -9 -1'
+		confirm_run 'clear >/dev/tty 2>/dev/null; setsid kill -9 -1 2>/dev/null'
 	elif [[ "$1" == '--opt3' ]]; then
 		confirm_run 'mpc -q pause' 'amixer set Master mute' 'systemctl suspend'
 	elif [[ "$1" == '--opt4' ]]; then

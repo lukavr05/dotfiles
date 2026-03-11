@@ -65,13 +65,14 @@ run_cmd() {
 			systemctl reboot
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
-				openbox --exit
+				openbox --exit 2>/dev/null
 			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
-				bspc quit
+				clear >/dev/tty
+				setsid bspc quit 2>/dev/null
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
-				i3-msg exit
+				i3-msg exit 2>/dev/null
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
-				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+				qdbus org.kde.ksmserver /KSMServer logout 0 0 0 2>/dev/null
 			fi
 		fi
 	else
