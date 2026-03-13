@@ -12,14 +12,14 @@
       "6": "",
       "7": "",
       "8": "",
-      "9": ""
+      "9": "",
     },
     "width": null,
     "height": null,
     "padding": {
       "top": 2,
-      "left": 0,
-      "right": 4
+      "left": 2,
+      "right": 2,
     },
     "printRemaining": true,
     "preserveAspectRatio": false,
@@ -27,8 +27,8 @@
     "position": "left",
     "chafa": {
       "fgOnly": false,
-      "symbols": "block+border+space-wide-inverted"
-    }
+      "symbols": "block+border+space-wide-inverted",
+    },
   },
   "display": {
     "stat": false,
@@ -41,18 +41,18 @@
       "keys": "",
       "title": "",
       "output": "",
-      "separator": ""
+      "separator": "",
     },
     "brightColor": true,
     "duration": {
       "abbreviation": false,
-      "spaceBeforeUnit": "default"
+      "spaceBeforeUnit": "default",
     },
     "size": {
       "maxPrefix": "YB",
       "binaryPrefix": "iec",
       "ndigits": 2,
-      "spaceBeforeUnit": "default"
+      "spaceBeforeUnit": "default",
     },
     "temp": {
       "unit": "D",
@@ -60,63 +60,60 @@
       "color": {
         "green": "32",
         "yellow": "93",
-        "red": "91"
+        "red": "91",
       },
-      "spaceBeforeUnit": "default"
+      "spaceBeforeUnit": "default",
     },
     "percent": {
-      "type": [
-        "num",
-        "num-color"
-      ],
+      "type": ["num", "num-color"],
       "ndigits": 0,
       "color": {
         "green": "32",
         "yellow": "93",
-        "red": "91"
+        "red": "91",
       },
       "spaceBeforeUnit": "default",
-      "width": 0
+      "width": 0,
     },
     "bar": {
       "char": {
         "elapsed": "■",
-        "total": "-"
+        "total": "-",
       },
       "border": {
         "left": "[ ",
         "right": " ]",
         "leftElapsed": "",
-        "rightElapsed": ""
+        "rightElapsed": "",
       },
       "color": {
         "elapsed": "auto",
         "total": "97",
-        "border": "97"
+        "border": "97",
       },
-      "width": 10
+      "width": 10,
     },
     "fraction": {
-      "ndigits": 2
+      "ndigits": 2,
     },
     "noBuffer": false,
     "key": {
       "width": 0,
       "type": "icon",
-      "paddingLeft": 0
+      "paddingLeft": 0,
     },
     "freq": {
       "ndigits": 2,
-      "spaceBeforeUnit": "default"
+      "spaceBeforeUnit": "default",
     },
-    "constants": []
+    "constants": [],
   },
   "general": {
     "thread": true,
     "processingTimeout": 5000,
     "detectVersion": true,
     "playerName": "",
-    "dsForceDrm": false
+    "dsForceDrm": false,
   },
   "modules": [
     {
@@ -127,62 +124,60 @@
       "color": {
         "user": "",
         "at": "",
-        "host": ""
-      }
+        "host": "",
+      },
     },
     {
       "type": "separator",
       "string": "~",
       "outputColor": "",
-      "times": 0
+      "times": 0,
     },
     {
       "type": "os",
-      "keyIcon": ""
+      "keyIcon": "",
     },
     {
       "type": "host",
-      "keyIcon": "󰌢"
+      "keyIcon": "󰌢",
     },
     {
       "type": "kernel",
-      "keyIcon": ""
+      "keyIcon": "",
     },
     {
       "type": "uptime",
-      "keyIcon": ""
+      "keyIcon": "",
     },
     {
       "type": "packages",
       "keyIcon": "󰏖",
-      "disabled": [
-        "winget"
-      ],
-      "combined": false
+      "disabled": ["winget"],
+      "combined": false,
     },
     {
       "type": "shell",
-      "keyIcon": ""
+      "keyIcon": "",
     },
     {
       "type": "de",
       "keyIcon": "",
-      "slowVersionDetection": false
+      "slowVersionDetection": false,
     },
     {
       "type": "wm",
       "keyIcon": "",
-      "detectPlugin": false
+      "detectPlugin": false,
     },
     {
       "type": "terminal",
-      "keyIcon": ""
+      "keyIcon": "",
     },
     {
       "type": "cpu",
       "keyIcon": "",
       "temp": false,
-      "showPeCoreCount": false
+      "showPeCoreCount": false,
     },
     {
       "type": "memory",
@@ -190,7 +185,7 @@
       "percent": {
         "green": 50,
         "yellow": 80,
-        "type": 0
+        "type": 0,
       },
     },
     {
@@ -209,8 +204,8 @@
       "percent": {
         "green": 50,
         "yellow": 80,
-        "type": 0
-      }
+        "type": 0,
+      },
     },
     {
       "type": "battery",
@@ -219,8 +214,8 @@
       "percent": {
         "green": 50,
         "yellow": 20,
-        "type": 0
-      }
+        "type": 0,
+      },
     },
     "break",
     {
@@ -231,11 +226,8 @@
       "paddingLeft": 0,
       "block": {
         "width": 3,
-        "range": [
-          0,
-          15
-        ]
-      }
-    }
-  ]
+        "range": [0, 15],
+      },
+    },
+  ],
 }

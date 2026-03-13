@@ -16,13 +16,11 @@ theme='style-2'
 # CMDs
 uptime="$(uptime -p | sed -e 's/up //g')"
 host=$(hostname)
-wallpaper="$HOME/personal/images/wallpapers/p2oydeg58dca1-3064747189.png"
 
 # Options
 shutdown=' Shutdown'
 reboot=' Reboot'
 suspend=' Suspend'
-logout='󰌆 Lock'
 yes=' Yes'
 no=' No'
 
@@ -54,7 +52,7 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$suspend\n$reboot\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -69,8 +67,6 @@ run_cmd() {
 			mpc -q pause
 			amixer set Master mute
 			systemctl suspend --no-wall
-		elif [[ $1 == '--logout' ]]; then
-			betterlockscreen -l -u "$wallpaper" -b
 		fi
 	else
 		exit 0
@@ -88,8 +84,5 @@ case ${chosen} in
         ;;
     $suspend)
 		run_cmd --suspend
-        ;;
-    $logout)
-		run_cmd --logout
         ;;
 esac
