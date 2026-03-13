@@ -37,10 +37,6 @@ export PATH="/usr/local/go/bin:$HOME/go/bin:/home/luka/.npm-global/bin:/snap/bin
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 
-# Preferred editor
-export EDITOR='nvim'
-
-
 
 # =============================================================================
 # History Configuration
@@ -165,7 +161,6 @@ alias apt='sudo apt'
 alias aptu='sudo apt update'
 alias apti='sudo apt install'
 alias apts='apt search'
-alias upgrade='sudo apt update && sudo apt upgrade -y'
 alias update='sudo apt update && sudo apt upgrade -y'
 
 # --- Development Tools ---
