@@ -21,7 +21,7 @@ host=$(hostname)
 shutdown=' Shutdown'
 reboot=' Reboot'
 suspend=' Suspend'
-logout=' Logout'
+logout='󰌆 Lock'
 yes=' Yes'
 no=' No'
 
@@ -69,7 +69,7 @@ run_cmd() {
 			amixer set Master mute
 			systemctl suspend --no-wall
 		elif [[ $1 == '--logout' ]]; then
-			bspc quit
+			betterlockscreen -l
 		fi
 	else
 		exit 0
