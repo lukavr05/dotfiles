@@ -16,6 +16,7 @@ theme='style-2'
 # CMDs
 uptime="$(uptime -p | sed -e 's/up //g')"
 host=$(hostname)
+wallpaper="$HOME/personal/images/wallpapers/p2oydeg58dca1-3064747189.png"
 
 # Options
 shutdown=' Shutdown'
@@ -69,7 +70,7 @@ run_cmd() {
 			amixer set Master mute
 			systemctl suspend --no-wall
 		elif [[ $1 == '--logout' ]]; then
-			betterlockscreen -l
+			betterlockscreen -l -u "$wallpaper" -b
 		fi
 	else
 		exit 0

@@ -5,9 +5,9 @@
 # App launcher group
 super + {t,f,o,c,e}
     { \
-      /home/luka/.local/kitty.app/bin/kitty, \
+      $HOME/.local/kitty.app/bin/kitty, \
       firefox, \
-      /home/luka/Applications/Obsidian-1.6.7.AppImage &>/dev/null & disown, \
+      $HOME/Applications/Obsidian-1.6.7.AppImage &>/dev/null & disown, \
       zed, \
       pcmanfm \
     }
@@ -18,18 +18,15 @@ super + Escape
 
 # Rofi launcher
 super + space
-    ~/.config/rofi/launchers/type-1/launcher.sh
+    $HOME/.config/rofi/launchers/type-1/launcher.sh
 
 #######################################
 # BSPWM HOTKEYS
 #######################################
 
-# Power options / quit bspwm
+# Power options
 super + shift + Delete
-    ~/.config/rofi/powermenu/type-1/powermenu.sh
-
-super + shift + q
-    shutdown
+    $HOME/.config/rofi/powermenu/type-1/powermenu.sh
 
 # Close / kill window
 super + q
@@ -45,7 +42,7 @@ super + alt + m
 
 # Restore latest hidden window
 super + u
-    last=$(bspc query -N -n .window.hidden | tail -n 1); \
+    last=$(bspc query -N -n .window.hidden 2>/dev/null | tail -n 1); \
     [ -n "$last" ] && bspc node "$last" --flag hidden=off
 
 # Restore all hidden windows
@@ -60,24 +57,37 @@ super + y
 super + g
     bspc node -s biggest.window
 
+# Flip vertically/horizontally
+super + {v,h}
+    bspc node @/ -f {horizontal,vertical}
+
+# Balance all windows
+super + backslash
+    bspc node @/ -e balance
+
 # Rotate tree
 super + shift + {Left,Right}
     bspc node @/ -C {forward,backward}
+
+# Swap with directional window
+super + shift + {h,j,k,l}
+    bspc node -s {west,south,north,east}
+
+# Equalize window sizes
+super + equal
+    bspc node @/ -e equalize
 
 #######################################
 # WINDOW STATES / FLAGS
 #######################################
 
 # Toggle fullscreen
-super + Prior
+super + prior
     bspc node -t fullscreen
 
-super + Next
-    bspc node -t tiled
-
 # Window states
-super + {s,shift + s,w,r}
-    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {s,shift + s,w}
+    bspc node -t {tiled,pseudo_tiled,floating}
 
 # Node flags
 super + ctrl + {m,x,y,z}
@@ -188,4 +198,14 @@ XF86MonBrightnessUp
 
 XF86MonBrightnessDown
     brightnessctl set 10%-
+
+#######################################
+# SCREENSHOTS
+#######################################
+
+super + Print
+    grim -g "$(slurp)" - | wl-copy
+
+Print
+    grim - | wl-copy
 
