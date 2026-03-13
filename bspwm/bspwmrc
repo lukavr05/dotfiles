@@ -45,9 +45,8 @@ xsetroot -cursor_name left_ptr
 
 # Autostart applications with error handling
 {
-    nm-applet &
     sleep 1
-    ~/.config/polybar/launch.sh &
+    $HOME/.config/polybar/launch.sh &
     picom &
     nitrogen --restore &
     tint2 &
