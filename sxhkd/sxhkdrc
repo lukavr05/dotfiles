@@ -204,8 +204,8 @@ XF86MonBrightnessDown
 #######################################
 
 super + Print
-    grim -g "$(slurp)" - | wl-copy
+    scrot -s - | xclip -selection clipboard -t image/png
 
 Print
-    grim - | wl-copy
+    scrot - | xclip -selection clipboard -t image/png
 
