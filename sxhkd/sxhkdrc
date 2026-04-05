@@ -82,7 +82,7 @@ super + equal
 #######################################
 
 # Toggle fullscreen
-super + prior
+super + Page_Up
     bspc node -t ~fullscreen
 
 # Window states
@@ -204,8 +204,8 @@ XF86MonBrightnessDown
 #######################################
 
 super + Print
-    scrot -s - | xclip -selection clipboard -t image/png
+    maim -s -c 0,0,0 | xclip -selection clipboard -t image/png
 
 Print
-    scrot - | xclip -selection clipboard -t image/png
+    maim -c 0,0,0 | xclip -selection clipboard -t image/png
 
