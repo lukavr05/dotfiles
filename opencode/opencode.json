@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["@bastiangx/opencode-unmoji"],
+  "plugin": ["@tarquinen/opencode-dcp@latest"],
+  "plugin": ["@knikolov/opencode-plugin-simple-memory"],
+  "plugin": ["opencode-froggy"],
+
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options": {
+        "baseURL": "http://localhost:1234/v1"
+      },
+      "models": {
+        "lmstudio-community/Qwen3.5-9B-GGUF": {
+          "name": "qwen3.5-9b"
+        }
+      }
+    }
+  }
+}
+
