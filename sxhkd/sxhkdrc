@@ -204,8 +204,8 @@ XF86MonBrightnessDown
 #######################################
 
 super + Print
-    maim -s -c 0,0,0 | xclip -selection clipboard -t image/png
+    maim -s -c 142,192,124 | xclip -selection clipboard -t image/png
 
 Print
-    maim -c 0,0,0 | xclip -selection clipboard -t image/png
+    maim -c 142,192,124 | xclip -selection clipboard -t image/png
 
