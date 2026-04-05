@@ -60,15 +60,14 @@ run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff
+			systemctl poweroff 2>&1
 		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot
+			systemctl reboot 2>&1
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
 				openbox --exit 2>/dev/null
 			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
-				clear >/dev/tty
-				setsid bspc quit 2>/dev/null
+				bspc quit 2>&1
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
 				i3-msg exit 2>/dev/null
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
