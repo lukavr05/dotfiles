@@ -92,15 +92,15 @@ run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
 		betterlockscreen -l
 	elif [[ "$1" == '--opt2' ]]; then
-		confirm_run 'clear >/dev/tty 2>/dev/null; setsid kill -9 -1 2>/dev/null'
+		confirm_run 'bspc quit' 2>&1
 	elif [[ "$1" == '--opt3' ]]; then
 		confirm_run 'mpc -q pause' 'amixer set Master mute' 'systemctl suspend'
 	elif [[ "$1" == '--opt4' ]]; then
 		confirm_run 'systemctl hibernate'
 	elif [[ "$1" == '--opt5' ]]; then
-		confirm_run 'systemctl reboot'
+		confirm_run 'systemctl reboot' 2>&1
 	elif [[ "$1" == '--opt6' ]]; then
-		confirm_run 'systemctl poweroff'
+		confirm_run 'systemctl poweroff' 2>&1
 	fi
 }
 
