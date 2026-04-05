@@ -51,6 +51,7 @@ xsetroot -cursor_name left_ptr
     nitrogen --restore &
     tint2 &
     dunst &
+    udiskie-notify &
 } &
 
 # Map Caps Lock to Escape

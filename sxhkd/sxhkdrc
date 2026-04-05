@@ -83,7 +83,7 @@ super + equal
 
 # Toggle fullscreen
 super + prior
-    bspc node -t fullscreen
+    bspc node -t ~fullscreen
 
 # Window states
 super + {s,shift + s,w}
