@@ -152,6 +152,12 @@ alias gaa='git add --all'
 alias gclean='git clean -fd'
 alias glog='git log --graph --oneline --decorate --all'
 
+# --- Git Helpers ---
+if command -v delta >/dev/null 2>&1; then
+    alias gd='delta'
+    alias gdv='delta --diff-only'
+fi
+
 # --- Editor ---
 alias vim='nvim'
 alias v='nvim'
@@ -188,6 +194,7 @@ alias ipinfo='curl ipinfo.io'
 alias wttr='curl wttr.in'
 alias findf='fzf'
 alias bc='bc -l'
+alias rg='rg --color=auto'
 alias w3m='w3m -B'
 
 # --- Compression ---
