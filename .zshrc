@@ -185,7 +185,7 @@ alias ports='netstat -tulanp'
 # --- Network & Utilities ---
 alias get='curl -LO'
 alias ipinfo='curl ipinfo.io'
-alias weather='curl wttr.in'
+alias wttr='curl wttr.in'
 alias findf='fzf'
 alias bc='bc -l'
 alias w3m='w3m -B'
@@ -206,6 +206,10 @@ alias sshk='ssh-keygen -t ed25519'
 alias q='exit'
 alias c='clear'
 alias h='history'
+alias src='source .zshrc'
+
+# --- OpenCode ---
+alias oc='opencode'
 
 # --- funny ---
 alias wtf='man'
