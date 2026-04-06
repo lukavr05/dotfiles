@@ -220,7 +220,6 @@ alias oc='opencode'
 
 # --- funny ---
 alias wtf='man'
-alias fuck='killall'
 
 # =============================================================================
 # Key Bindings
