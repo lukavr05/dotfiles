@@ -29,10 +29,10 @@ get_bluetooth_status() {
             
             echo "%{F#2193ff}${BT_CONNECTED_ICON} $device_name"
         else
-            echo "%{F#2193ff}${BT_DISCONNECTED_ICON}"
+            echo "%{F#2193ff}${BT_DISCONNECTED_ICON} n/a"
         fi
     else
-        echo "%{F#66ffffff}${BT_POWERED_OFF_ICON}"
+        echo "%{F#66ffffff}${BT_POWERED_OFF_ICON} off"
     fi
 }
 

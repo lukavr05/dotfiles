@@ -8,10 +8,10 @@ get_bluetooth_status() {
     return $?
 }
 
-# Send notification
+# Send notification via dunst
 notify() {
-    if command -v notify-send &>/dev/null; then
-        notify-send -i "bluetooth" -t 2000 "$1" "$2"
+    if command -v notify-send &>/dev/null && ! dunstctl is-paused 2>/dev/null; then
+        notify-send -i bluetooth -t 2000 "$1" "$2"
     fi
 }
 
@@ -35,7 +35,19 @@ if echo "$status_output" | grep -q "Powered: yes"; then
 else
     # Turn on
     if bluetoothctl power on >/dev/null 2>&1; then
-        notify "Bluetooth" "Bluetooth turned on"
+        sleep 1
+        connected=false
+        for device in $(bluetoothctl devices Paired | cut -d' ' -f2); do
+            if bluetoothctl connect "$device" >/dev/null 2>&1; then
+                device_name=$(bluetoothctl devices Paired | grep "$device" | cut -d' ' -f3-)
+                notify "Bluetooth" "Connected to $device_name"
+                connected=true
+                break
+            fi
+        done
+        if ! $connected; then
+            notify "Bluetooth" "Bluetooth turned on"
+        fi
         exit 0
     else
         notify "Bluetooth Error" "Failed to turn on bluetooth"
