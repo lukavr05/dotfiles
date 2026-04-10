@@ -209,7 +209,8 @@ alias restart-wm='bspc wm -r'
 # --- SSH ---
 alias sshk='ssh-keygen -t ed25519'
 
-# --- Quick Commands ---
+# --- Terminal ---
+alias kitty='$HOME/.local/kitty.app/bin/kitty'
 alias q='exit'
 alias c='clear'
 alias h='history'
