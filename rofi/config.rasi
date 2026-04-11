@@ -82,7 +82,7 @@ combi-modi: "window,drun,run";
 
 	/*---------- Misc setting ----------*/
 	terminal: "rofi-sensible-terminal";
-	font: "GeistMono 12";
+	font: "Berkeley NF 14";
 	sort: false;
 	threads: 0;
 	click-to-exit: true;
