@@ -27,6 +27,9 @@ plugins=(
 # Initialize Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
+# Zsh Autosuggestions - Italic style
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8 italic=1'
+
 # =============================================================================
 # Environment Variables
 # =============================================================================
