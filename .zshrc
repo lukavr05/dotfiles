@@ -28,7 +28,32 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Zsh Autosuggestions - Italic style
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8 italic=1'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8,italic'
+
+# Commands
+ZSH_HIGHLIGHT_STYLES[command]='fg=cyan,bold'
+
+# Unknown/invalid commands
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
+
+# Strings and quotes
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=orange'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=orange'
+
+# Flags/options (e.g. -l, --help)
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=green,italic'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=green,italic'
+
+# Paths
+ZSH_HIGHLIGHT_STYLES[path]='underline'
+
+# Comments
+ZSH_HIGHLIGHT_STYLES[comment]='fg=245,italic'
+
+# Built-ins, aliases, functions
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[function]='fg=green'
 
 # =============================================================================
 # Environment Variables
@@ -55,7 +80,9 @@ setopt SHARE_HISTORY
 
 # Correction options
 setopt CORRECT
-setopt CORRECT_ALL
+
+setopt INTERACTIVE_COMMENTS
+
 
 # =============================================================================
 # Aliases
@@ -166,11 +193,8 @@ alias vim='nvim'
 alias v='nvim'
 
 # --- System Management ---
-alias apt='sudo apt'
-alias aptu='sudo apt update'
-alias apti='sudo apt install'
-alias apts='apt search'
-alias update='sudo apt update && sudo apt upgrade -y'
+alias nala='sudo nala'
+alias update='sudo nala update && sudo nala upgrade -y'
 
 # --- Development Tools ---
 alias py='python3'
