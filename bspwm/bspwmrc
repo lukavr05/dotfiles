@@ -4,7 +4,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Workspaces
-bspc monitor -d 1 2 3 4 5
+bspc monitor -d I II III
 
 # Basic settings
 bspc config border_width         2
@@ -49,7 +49,6 @@ xsetroot -cursor_name left_ptr
     $HOME/.config/polybar/launch.sh &
     picom &
     nitrogen --restore &
-    tint2 &
     dunst &
     udiskie-notify &
 } &
