@@ -8,7 +8,7 @@ super + {t,f,o,c,e}
       $HOME/.local/kitty.app/bin/kitty, \
       firefox, \
       $HOME/Applications/Obsidian-1.6.7.AppImage &>/dev/null & disown, \
-      zed, \
+      code, \
       pcmanfm \
     }
 
@@ -18,8 +18,7 @@ super + Escape
 
 # Rofi launcher
 super + space
-    $HOME/.config/rofi/launchers/type-1/launcher.sh
-
+    $HOME/.config/rofi/launchers/type-2/launcher.sh
 #######################################
 # BSPWM HOTKEYS
 #######################################
