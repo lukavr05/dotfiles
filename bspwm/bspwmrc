@@ -4,7 +4,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Workspaces
-bspc monitor -d I II III
+bspc monitor -d 1 2 3
 
 # Basic settings
 bspc config border_width         2

@@ -81,8 +81,11 @@ super + equal
 #######################################
 
 # Toggle fullscreen
-super + Page_Up
-    bspc node -t ~fullscreen
+super + alt + g
+    if bspc query -N -n focused.fullscreen &>/dev/null; \
+    then bspc node -t tiled; \
+    else bspc node -t fullscreen; \
+    fi
 
 # Window states
 super + {s,shift + s,w}

@@ -57,7 +57,7 @@ get_weather_icon() {
         "Thunderstorm") echo "" ;;
         "Snow") echo "" ;;
         "Mist"|"Fog"|"Haze"|"Smoke") echo "" ;;
-        "Dust"|"Sand"|"Squall"|"Tornado") echo "" ;;
+        "Dust"|"Sand"|"Squall"|"Tornado") echo "" ;;
         *) echo "" ;;
     esac
 }
@@ -147,7 +147,7 @@ if ! check_cache; then
         desc=$(echo "$weather" | jq -r '.weather[0].main')
         icon=$(get_weather_icon "$desc")
         
-        result="$DISPLAY_NAME %{T2}$icon%{T-} $temp°C"
+        result="$DISPLAY_NAME %{T4}$icon%{T1} $temp°C"
         update_cache "$result"
         echo "$result"
     else
