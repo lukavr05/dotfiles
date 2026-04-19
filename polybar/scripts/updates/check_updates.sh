@@ -70,9 +70,11 @@ get_updates() {
     echo "$count"
 }
 
-# Main logic
-if ! check_cache; then
-    count=$(get_updates)
-    update_cache "$count"
-    echo "$count"
+# Main logic - if cache is valid, check_cache already outputs the value; otherwise fetch new updates
+if check_cache; then
+    exit 0
 fi
+
+count=$(get_updates)
+update_cache "$count"
+echo "$count"
