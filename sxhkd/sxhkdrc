@@ -8,7 +8,7 @@ super + {t,f,o,c,e}
       $HOME/.local/kitty.app/bin/kitty, \
       firefox, \
       $HOME/Applications/Obsidian-1.6.7.AppImage &>/dev/null & disown, \
-      code, \
+      zed, \
       pcmanfm \
     }
 
@@ -191,23 +191,32 @@ XF86AudioLowerVolume
 XF86AudioMute
     wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
+# Media controls
+XF86AudioPlay
+    playerctl play-pause && notify-send -u low -t 1500 "⏯ $(playerctl metadata title)"
+
+XF86AudioPause
+    playerctl pause && notify-send -u low -t 1500 "⏸ $(playerctl metadata title)"
+
+XF86AudioNext
+    playerctl next && notify-send -u low -t 1500 "⏭ $(playerctl metadata artist) - $(playerctl metadata title)"
+
+XF86AudioPrev
+    playerctl previous && notify-send -u low -t 1500 "⏮ $(playerctl metadata artist) - $(playerctl metadata title)"
+
 #######################################
 # BRIGHTNESS
 #######################################
 
 XF86MonBrightnessUp
-    brightnessctl set +10%
+    brightnessctl -e set +2%
 
 XF86MonBrightnessDown
-    brightnessctl set 10%-
+    brightnessctl --exponent=6 -n set 2%-
 
 #######################################
 # SCREENSHOTS
 #######################################
 
 super + Print
-    maim -s -c 142,192,124 | xclip -selection clipboard -t image/png
-
-Print
-    maim -c 142,192,124 | xclip -selection clipboard -t image/png
-
+    spectacle -l

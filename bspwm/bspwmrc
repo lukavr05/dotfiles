@@ -44,14 +44,15 @@ export XCURSOR_SIZE=24
 xsetroot -cursor_name left_ptr
 
 # Autostart applications with error handling
-{
+{{
     sleep 1
     $HOME/.config/polybar/launch.sh &
     picom &
     nitrogen --restore &
     dunst &
     udiskie-notify &
-} &
+    blueman-applet &
+}} &
 
 # Map Caps Lock to Escape
 setxkbmap -option caps:escape
