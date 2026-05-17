@@ -246,6 +246,9 @@ alias src='source .zshrc'
 # --- OpenCode ---
 alias oc='opencode'
 
+# --- Applications ---
+alias tidal='~/Applications/tidal-hifi-7.0.1.AppImage --no-sandbox'
+
 # --- funny ---
 alias wtf='man'
 
