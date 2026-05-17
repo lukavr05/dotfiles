@@ -3,13 +3,14 @@
 #######################################
 
 # App launcher group
-super + {t,f,o,c,e}
+super + {t,f,o,c,e,i}
     { \
       $HOME/.local/kitty.app/bin/kitty, \
       firefox, \
       $HOME/Applications/Obsidian-1.6.7.AppImage &>/dev/null & disown, \
       zed, \
-      pcmanfm \
+      pcmanfm, \
+      ~/Applications/tidal-hifi-7.0.1.AppImage --no-sandbox &>/dev/null & disown \
     }
 
 # Reload sxhkd
@@ -142,9 +143,7 @@ super + {_,shift + }Tab
 super + alt + {_,shift + }Tab
     bspc node -d {next,prev}.local
 
-# Move desktop to monitor
-super + ctrl + {Left,Right}
-    bspc desktop -m {prev,next} --follow
+
 
 #######################################
 # PRESELECT
@@ -155,9 +154,6 @@ super + ctrl + {h,j,k,l}
 
 super + ctrl + {1-9}
     bspc node -o 0.{1-9}
-
-super + ctrl + space
-    bspc node -p cancel
 
 super + ctrl + shift + space
     bspc query -N -d | xargs -I id bspc node id -p cancel
@@ -199,12 +195,21 @@ XF86AudioPause
     playerctl pause && notify-send -u low -t 1500 "⏸ $(playerctl metadata title)"
 
 XF86AudioNext
-    playerctl next && notify-send -u low -t 1500 "⏭ $(playerctl metadata artist) - $(playerctl metadata title)"
+    playerctl next; notify-send -u low -t 1500 "Now Playing" "$(playerctl metadata artist) - $(playerctl metadata title)"
 
 XF86AudioPrev
-    playerctl previous && notify-send -u low -t 1500 "⏮ $(playerctl metadata artist) - $(playerctl metadata title)"
+    playerctl previous; notify-send -u low -t 1500 "Now Playing" "$(playerctl metadata artist) - $(playerctl metadata title)"
 
-#######################################
+super + ctrl + Right
+    playerctl next; notify-send -u low -t 1500 "Now Playing" "$(playerctl metadata artist) - $(playerctl metadata title)"
+
+super + ctrl + Left
+    playerctl previous; notify-send -u low -t 1500 "Now Playing" "$(playerctl metadata artist) - $(playerctl metadata title)"
+
+super + ctrl + space
+    playerctl play-pause && notify-send -u low -t 1500 "⏯ $(playerctl metadata title)"
+
+######################################
 # BRIGHTNESS
 #######################################
 
@@ -218,5 +223,12 @@ XF86MonBrightnessDown
 # SCREENSHOTS
 #######################################
 
+# Full screen → clipboard
 super + Print
-    spectacle -l
+    maim | xclip -selection clipboard -t image/png && \
+    notify-send "Screenshot Captured!" "Full screen copied"
+
+# Selection → clipboard
+super + shift + Print
+    maim -s | xclip -selection clipboard -t image/png && \
+    notify-send "Screenshot Captured!" "Selection copied"

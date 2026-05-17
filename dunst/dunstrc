@@ -1,62 +1,154 @@
+# ┌─────────────────────────────────────────────────────────────────┐
+# │  dunstrc — Gruvbox Dark                                         │
+# │  ~/.config/dunst/dunstrc                                        │
+# └─────────────────────────────────────────────────────────────────┘
+
+# Gruvbox Dark palette
+#   bg      #1d2021   bg-hard
+#   bg1     #282828   bg
+#   bg2     #3c3836   bg1
+#   fg      #ebdbb2   fg
+#   yellow  #d79921
+#   aqua    #8ec07c   ← accent
+#   blue    #458588
+#   red     #cc241d
+#   orange  #d65d0e
+#   green   #98971a
+
+
 [global]
-    monitor = 0
-    follow = mouse
-    width = 350
-    height = (0, 10)
-    origin = bottom-right
-    offset = (20, 20)
-    indicate_hidden = yes
-    shrink = no
-    transparency = 10
-    separator_height = 2
-    padding = 8
-    horizontal_padding = 8
-    frame_width = 3
-    frame_color = "#458588"
-    separator_color = frame
-    sort = yes
-    idle_threshold = 120
-    font = MonoLisa NF 14
-    line_height = 0
-    markup = full
-    format = "<b>%s</b>\\n%b"
-    alignment = left
-    show_age_threshold = 60
-    word_wrap = yes
-    ellipsize = middle
-    ignore_newline = no
-    stack_duplicates = true
+
+    # ── Display ───────────────────────────────────────────────────────
+    monitor         = 0
+    follow          = mouse
+
+    # ── Geometry ──────────────────────────────────────────────────────
+    width           = (0, 380)
+    height          = 200
+    origin          = bottom-right
+    offset          = 20x20
+    corner_radius   = 8
+    gap_size        = 6
+
+    # ── Appearance ────────────────────────────────────────────────────
+    frame_width         = 2
+    frame_color         = "#8ec07c"
+    separator_height    = 1
+    separator_color     = "#3c3836"
+    padding             = 12
+    horizontal_padding  = 14
+    text_icon_padding   = 10
+    transparency        = 30
+
+    # ── Progress bar ──────────────────────────────────────────────────
+    progress_bar            = true
+    progress_bar_height     = 8
+    progress_bar_frame_width = 1
+    progress_bar_min_width  = 150
+    progress_bar_max_width  = 300
+
+    # ── Icons ─────────────────────────────────────────────────────────
+    icon_position                = left
+    min_icon_size                = 16
+    max_icon_size                = 16
+    icon_theme                   = "Adwaita"
+    enable_recursive_icon_lookup = true
+
+    # ── Typography ────────────────────────────────────────────────────
+    font               = MonoLisa NF 13
+    line_height        = 4
+    markup             = full
+    format             = "<b>%s</b>\n%b"
+    alignment          = right
+    vertical_alignment = center
+    word_wrap          = yes
+    ellipsize          = middle
+    ignore_newline     = no
+
+    # ── Behaviour ─────────────────────────────────────────────────────
+    indicate_hidden      = yes
+    shrink               = no
+    stack_duplicates     = true
     hide_duplicate_count = false
-    show_indicators = yes
-    icon_position = left
-    progress_bar = true
-    min_icon_size = 32
-    max_icon_size = 32
-    icon_theme = "Adwaita"
-    sticky_history = yes
-    history_length = 20
-    browser = firefox
-    dmenu = rofi -dmenu
+    show_indicators      = yes
+    show_age_threshold   = 30
+    idle_threshold       = 120
+    notification_limit   = 5
+    sticky_history       = yes
+    history_length       = 20
+
+    # ── Integrations ──────────────────────────────────────────────────
+    browser           = firefox
+    dmenu             = rofi -dmenu -p "Dunst"
     always_run_script = true
-    title = Dunst
-    class = Dunst
-    notification_limit = 20
+    title             = Dunst
+    class             = Dunst
+
+    # ── Mouse actions ─────────────────────────────────────────────────
+    mouse_left_click   = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click  = close_all
+
+    # ── Keyboard shortcuts ────────────────────────────────────────────
+    close     = ctrl+space
+    close_all = ctrl+shift+space
+    history   = ctrl+grave
+    context   = ctrl+shift+period
+
+
+# ── Urgency levels ────────────────────────────────────────────────────
 
 [urgency_low]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
-    timeout = 10
+    background  = "#282828"
+    foreground  = "#928374"
+    frame_color = "#3c3836"
+    timeout     = 6
 
 [urgency_normal]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
-    timeout = 10
+    background  = "#242424"
+    foreground  = "#ebdbb2"
+    frame_color = "#8ec07c"
+    timeout     = 10
 
 [urgency_critical]
-    background = "#1d2021"
-    foreground = "#cc241d"
+    background  = "#1d2021"
+    foreground  = "#fb4934"
     frame_color = "#cc241d"
-    timeout = 0
+    timeout     = 0
 
-[script-path]
-    /home/luka/.config/dunst/scripts
+
+# ── Per-app overrides ────────────────────────────────────────────────
+
+[volume_brightness]
+    appname     = "dunst_osd"
+    background  = "#282828"
+    foreground  = "#d79921"
+    frame_color = "#d79921"
+    timeout     = 3
+    format      = "%s\n%b"
+
+[spotify]
+    appname     = "Spotify"
+    background  = "#1d2021"
+    foreground  = "#b8bb26"
+    frame_color = "#98971a"
+    timeout     = 8
+
+# Battery warning at 20% — orange accent
+[battery_warning]
+    appname     = "battery-monitor"
+    summary     = "Battery Low*"
+    background  = "#1d2021"
+    foreground  = "#d65d0e"
+    frame_color = "#d65d0e"
+    timeout     = 0
+
+# Battery critical at 10% — stays until dismissed
+[battery_critical]
+    appname     = "battery-monitor"
+    summary     = "Battery Critical*"
+    background  = "#1d2021"
+    foreground  = "#fb4934"
+    frame_color = "#cc241d"
+    urgency     = critical
+    timeout     = 0
