@@ -47,11 +47,12 @@ xsetroot -cursor_name left_ptr
 {{
     nitrogen --restore &
     picom &
-    udiskie-notify &
+    udiskie -a &
+    blueman-applet &
     $HOME/.config/polybar/launch.sh &
     dunst &
-    blueman-applet &
     $HOME/.config/dunst/scripts/battery-monitor.sh &
+    $HOME/.config/dunst/scripts/network-notify.sh wlp0s20f3 &
 }} &
 
 # Map Caps Lock to Escape

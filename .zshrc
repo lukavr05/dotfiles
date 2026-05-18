@@ -289,3 +289,6 @@ fastfetch
 
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/home/luka/.lmstudio/bin"
+
+# opencode
+export PATH=/home/luka/.opencode/bin:$PATH
