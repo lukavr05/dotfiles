@@ -232,3 +232,11 @@ super + Print
 super + shift + Print
     maim -s | xclip -selection clipboard -t image/png && \
     notify-send "Screenshot Captured!" "Selection copied"
+
+# Lock screen
+super + alt + ctrl + l
+    betterlockscreen -l blur
+
+# Suspend + lock
+super + alt + ctrl + s
+    betterlockscreen -s blur

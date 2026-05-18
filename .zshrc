@@ -27,34 +27,65 @@ plugins=(
 # Initialize Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
-# Zsh Autosuggestions - Italic style
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8,italic'
 
-# Commands
-ZSH_HIGHLIGHT_STYLES[command]='fg=cyan,bold'
+# ── Commands ──────────────────────────────────────────────────────────────────
+ZSH_HIGHLIGHT_STYLES[command]='fg=11,bold'                # bright yellow  — commands
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=2,bold'                 # aqua           — cd echo source…
+ZSH_HIGHLIGHT_STYLES[function]='fg=12,bold'               # bright blue    — functions
+ZSH_HIGHLIGHT_STYLES[alias]='fg=10,bold'                  # bright green   — aliases
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=10,italic'         # bright green   — *.pdf=zathura
+ZSH_HIGHLIGHT_STYLES[global-alias]='fg=10,bold,underline' # bright green   — global aliases
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=13,italic'           # bright magenta — sudo env nice…
+ZSH_HIGHLIGHT_STYLES[arg0]='fg=11'                        # bright yellow  — command-position override
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=3,bold'           # yellow         — if then else fi for
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=9,bold,underline' # bright red     — unrecognised token
 
-# Unknown/invalid commands
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
+# ── Arguments & paths ─────────────────────────────────────────────────────────
+ZSH_HIGHLIGHT_STYLES[default]='fg=15'                     # fg             — plain arguments
+ZSH_HIGHLIGHT_STYLES[path]='fg=15,underline'              # fg + underline — valid path on disk
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=7'                  # gray           — partial/incomplete path
+ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=12,italic,underline' # bright blue — auto-cd dirs
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=11,italic'             # bright yellow  — * ? ** […]
 
-# Strings and quotes
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=orange'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=orange'
+# ── Flags & options ───────────────────────────────────────────────────────────
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=12,italic' # bright blue    — -x
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=12,italic' # bright blue    — --long-flag
 
-# Flags/options (e.g. -l, --help)
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=green,italic'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=green,italic'
+# ── Strings ───────────────────────────────────────────────────────────────────
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=10'               # bright green — 'literal'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=9'       # bright red   — unclosed '
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=10'               # bright green — "interpolated"
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=9'       # bright red   — unclosed "
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=10,italic'        # bright green — $'escape\n'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=9'       # bright red   — unclosed $'
 
-# Paths
-ZSH_HIGHLIGHT_STYLES[path]='underline'
+# ── String internals ──────────────────────────────────────────────────────────
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=11'        # bright yellow  — $var inside "…"
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=13'          # bright magenta — \n \t inside "…"
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=13'          # bright magenta — escapes in $'…'
 
-# Comments
-ZSH_HIGHLIGHT_STYLES[comment]='fg=245,italic'
+# ── Command & process substitution ────────────────────────────────────────────
+ZSH_HIGHLIGHT_STYLES[command-substitution]='fg=15'
+ZSH_HIGHLIGHT_STYLES[command-substitution-unquoted]='fg=15'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=13,bold'           # bright magenta — $( )
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-unquoted]='fg=13,bold'
+ZSH_HIGHLIGHT_STYLES[process-substitution]='fg=15'
+ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='fg=13,bold'           # bright magenta — <( )
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=15'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=9'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='fg=13,bold'           # bright magenta — ` `
 
-# Built-ins, aliases, functions
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[alias]='fg=green,bold'
-ZSH_HIGHLIGHT_STYLES[function]='fg=green'
+# ── Operators & separators ────────────────────────────────────────────────────
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=3,bold'                 # yellow         — ; | && ||
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=13,bold'                     # bright magenta — > >> < 2>&1
+ZSH_HIGHLIGHT_STYLES[named-fd]='fg=13'                             # bright magenta — named fds
+ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=13'                           # bright magenta — 2, etc.
 
+# ── Assignment, history & comments ────────────────────────────────────────────
+ZSH_HIGHLIGHT_STYLES[assign]='fg=11,italic'                        # bright yellow  — VAR=value
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=3,italic'              # yellow         — !! !$ !42
+ZSH_HIGHLIGHT_STYLES[comment]='fg=8,italic'                        # dark gray      — # comments
 # =============================================================================
 # Environment Variables
 # =============================================================================
@@ -96,13 +127,13 @@ if command -v lsd >/dev/null 2>&1; then
     alias l='lsd'
     alias lsg='lsd --group-directories-first'
     alias tree='lsd --tree'
-elif command -v exa >/dev/null 2>&1; then
-    alias ls='exa --color=auto --group-directories-first'
-    alias ll='exa -la --git --header --group-directories-first'
-    alias la='exa -a --group-directories-first'
-    alias l='exa --group-directories-first'
-    alias lsg='exa --color=auto --group-directories-first'
-    alias tree='exa --tree --group-directories-first'
+elif command -v eza >/dev/null 2>&1; then
+    alias ls='eza --color=auto --group-directories-first'
+    alias ll='eza -la --git --header --group-directories-first'
+    alias la='eza -a --group-directories-first'
+    alias l='eza --group-directories-first'
+    alias lsg='eza --color=auto --group-directories-first'
+    alias tree='eza --tree --group-directories-first'
 else
     alias ls='ls --color=auto'
     alias ll='ls -la'

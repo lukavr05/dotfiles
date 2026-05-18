@@ -53,6 +53,7 @@ xsetroot -cursor_name left_ptr
     dunst &
     $HOME/.config/dunst/scripts/battery-monitor.sh &
     $HOME/.config/dunst/scripts/network-notify.sh wlp0s20f3 &
+    xautolock -time 10 -locker 'betterlockscreen -l blur' -detectsleep &
 }} &
 
 # Map Caps Lock to Escape
