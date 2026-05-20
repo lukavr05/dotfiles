@@ -46,6 +46,7 @@ xsetroot -cursor_name left_ptr
 # Autostart applications with error handling
 {{
     nitrogen --restore &
+    gammastep &
     picom &
     udiskie -a &
     blueman-applet &

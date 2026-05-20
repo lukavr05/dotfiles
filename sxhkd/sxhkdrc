@@ -9,7 +9,7 @@ super + {t,f,o,c,e,i}
       firefox, \
       $HOME/Applications/Obsidian-1.6.7.AppImage &>/dev/null & disown, \
       zed, \
-      pcmanfm, \
+      thunar, \
       ~/Applications/tidal-hifi-7.0.1.AppImage --no-sandbox &>/dev/null & disown \
     }
 
@@ -232,11 +232,3 @@ super + Print
 super + shift + Print
     maim -s | xclip -selection clipboard -t image/png && \
     notify-send "Screenshot Captured!" "Selection copied"
-
-# Lock screen
-super + alt + ctrl + l
-    betterlockscreen -l blur
-
-# Suspend + lock
-super + alt + ctrl + s
-    betterlockscreen -s blur
