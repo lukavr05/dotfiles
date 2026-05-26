@@ -40,18 +40,16 @@ bspc rule -a '*:notification' state=floating
 bspc rule -a '*:scratchpad' state=floating sticky=on
 
 # Autostart applications with error handling
-{{
-    nitrogen --restore &
-    gammastep &
-    picom &
-    udiskie -a &
-    blueman-applet &
-    $HOME/.config/polybar/launch.sh &
-    dunst &
-    $HOME/.config/dunst/scripts/battery-monitor.sh &
-    $HOME/.config/dunst/scripts/network-notify.sh wlp0s20f3 &
-    xautolock -time 10 -locker 'betterlockscreen -l blur' -detectsleep &
-}} &
+nitrogen --restore & disown
+gammastep & disown
+picom & disown
+udiskie -a & disown
+blueman-applet & disown
+$HOME/.config/polybar/launch.sh & disown
+dunst & disown
+$HOME/.config/dunst/scripts/battery-monitor.sh & disown
+$HOME/.config/dunst/scripts/network-notify.sh wlp0s20f3 & disown
+xautolock -time 10 -locker 'betterlockscreen -l blur' -detectsleep & disown
 
 # Map Caps Lock to Escape
 setxkbmap -option caps:escape

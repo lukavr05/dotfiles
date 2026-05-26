@@ -68,20 +68,6 @@ event = "VeryLazy",
 event = "VeryLazy",
   },
 
-  -- noice.nvim
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    config = function()
-      require "configs.noice"
-    end,
-    event = "VeryLazy",
-  },
-
   {
   "RileyGabrielson/inspire.nvim",
   config = function()

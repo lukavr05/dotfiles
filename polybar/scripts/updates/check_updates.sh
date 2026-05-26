@@ -18,8 +18,11 @@ check_cache() {
 
 get_updates() {
     if command -v apt-get &>/dev/null; then
-        # Simulate upgrade using local cache only — no network, no sudo
-        apt-get -s upgrade 2>/dev/null | grep -c '^Inst '
+        if command -v /usr/lib/update-notifier/apt-check &>/dev/null; then
+            /usr/lib/update-notifier/apt-check 2>&1 | cut -d';' -f1
+        else
+            apt list --upgradable 2>/dev/null | grep -vc "^Listing"
+        fi
     elif command -v checkupdates &>/dev/null; then
         checkupdates 2>/dev/null | wc -l
     elif command -v dnf &>/dev/null; then

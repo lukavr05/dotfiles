@@ -1,3 +1,6 @@
 polybar/scripts/current_city
 *.bak
 *~
+
+# Contains environment variables and secrets — keep local only
+.zshenv
